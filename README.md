@@ -18,13 +18,14 @@
 
 **4.在client端运行程序`./write_data`**<br/>
   - `write_data.c`是对使用blk_ops的block_dev进行读写的程序,详细介绍在[这里](https://github.com/fusemen/REGISTER-BLOCK-DEVICE)。
-  - flag为全局信号，在对块设备blockdev进行读写操作中，若检测到读写程序名为"write_data",则将该程序正在执行的request利用print_request(rq)函数截取，获取其中的读写信号/虚拟地址/数据长度等信息，利用虚拟地址将内存中的数据读取到缓冲区中。
+  - flag为全局信号，在对块设备blockdev进行读写操作中，若检测到读写程序名为"write_data",则将该程序正在执行的request利用print_request(rq)函数截取,具体原理及方法在[这里](https://github.com/fusemen/BIO-to-RDMA)有详细介绍。
+  - 获取正在执行的request的读写标志/虚拟地址/数据长度等信息，利用虚拟地址将内存中的数据读取到缓冲区中。
   - 同时将flag置1，被阻塞的程序继续执行。
   
- 
-**5.将缓冲区中的数据通过rdma操作发送给server端。**
+**5.将缓冲区中的数据通过RDMA操作发送给server端。**
+  - 被阻塞的进程通过wake_up_interruptible(&cb->sem)进行唤醒，继续执行开始RDMA读写操作。
 
-**6.利用`dmesg`打印系统日志查看是否运行成功。**
+**6.双端程序运行结束，利用`dmesg`打印系统日志查看读写是否成功。**
 
 
 
