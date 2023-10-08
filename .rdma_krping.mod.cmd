@@ -1,0 +1,1 @@
+cmd_/home/embedded415/Desktop/bio_rdma/krping-master/rdma_krping.mod := { echo  /home/embedded415/Desktop/bio_rdma/krping-master/getopt.o /home/embedded415/Desktop/bio_rdma/krping-master/krping.o; echo; } > /home/embedded415/Desktop/bio_rdma/krping-master/rdma_krping.mod

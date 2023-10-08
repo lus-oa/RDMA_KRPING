@@ -1,0 +1,1 @@
+cmd_/home/embedded415/Desktop/bio_rdma/krping-master/rdma_krping.ko := ld -r -m elf_x86_64  -z max-page-size=0x200000  --build-id  -T ./scripts/module-common.lds -o /home/embedded415/Desktop/bio_rdma/krping-master/rdma_krping.ko /home/embedded415/Desktop/bio_rdma/krping-master/rdma_krping.o /home/embedded415/Desktop/bio_rdma/krping-master/rdma_krping.mod.o;  true

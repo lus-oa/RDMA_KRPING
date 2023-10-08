@@ -1,0 +1,1 @@
+cmd_/home/embedded415/Desktop/bio_rdma/krping-master/rdma_krping.o := ld -m elf_x86_64  -z max-page-size=0x200000    -r -o /home/embedded415/Desktop/bio_rdma/krping-master/rdma_krping.o /home/embedded415/Desktop/bio_rdma/krping-master/getopt.o /home/embedded415/Desktop/bio_rdma/krping-master/krping.o
