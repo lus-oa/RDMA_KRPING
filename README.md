@@ -1,6 +1,7 @@
 # RDMA_KRPING
 **demo**
 
+## 架构图
 ![RDMA FLOW](https://github.com/fusemen/RDMA_KRPING/assets/122666739/4dfb93be-e11a-4247-848f-ed2519112b01)
 
 <br/>
@@ -26,6 +27,7 @@
   - 被阻塞的进程通过 **wake_up_interruptible(&cb->sem)** 进行唤醒，继续执行开始RDMA读写操作。
 
 **6.双端程序运行结束，利用`dmesg`打印系统日志查看读写是否成功。**
+
 
 
 
