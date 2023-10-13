@@ -47,27 +47,22 @@ krping模块是一个内核可加载模块，它利用了Open Fabric动词实现
 #### 程序目标
 
 - 用于简单测试内核verbs: `connection setup`,`send`,
-`recv`, `rdma read`, `rdma write`, and `completion notifications`.
+`recv`, `rdma read`, `rdma write`以及 `completion notifications`.
 
-- Client/server model.
+- Client/Server 双端操作。
 
-- IP addressing used to identify remote peer.
+- 通过IP地址识别对端。
 
-- Transport independent utilizing the RDMA CMA service
+- 利用RDMA CMA（RDMA通信管理器服务）进行传输独立的操作。
 
-- No user-space application needed.
+- 不需要用户态程序.
 
-- Just a test utility...nothing more.
+<br/>
+该模块允许通过名为 `/proc/krping` 的 `/proc` 入口建立连接并运行 ping/pong 测试。这种简单的机制允许同时启动多个内核线程，无需用户空间应用程序。
 
-This module allows establishing connections and running ping/pong tests
-via a /proc entry called /proc/krping.  This simple mechanism allows
-starting many kernel threads concurrently and avoids the need for a user
-space application.
+krping 模块旨在利用所有主要的 DTO（数据传输操作）操作：send、recv、RDMA read和RDMA write。其目标是测试 API，因此不一定是高效的测试。
 
-The krping module is designed to utilize all the major DTO operations:
-send, recv, rdma read, and rdma write.  Its goal was to test the API
-and as such is not necessarily an efficient test.  Once the connection
-is established, the client and server begin a ping/pong loop:
+一旦建立连接，客户端和服务器开始进行 ping/pong 循环：
 
 Client				Server
 ---------------------------------------------------------------------
