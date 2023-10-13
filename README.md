@@ -63,24 +63,20 @@ krping 模块旨在利用所有主要的 DTO（数据传输操作）操作：sen
 
 一旦建立连接，客户端和服务器开始进行 ping/pong 循环：
 
-Client				Server
----------------------------------------------------------------------
-SEND(ping source buffer rkey/addr/len)
-
-				RECV Completion with ping source info
-				RDMA READ from client source MR
-				RDMA Read completion
-				SEND .go ahead. to client
-
-RECV Completion of .go ahead.
-SEND (ping sink buffer rkey/addr/len)	
-
-				RECV Completion with ping sink info
-				RDMA Write to client sink MR
-				RDMA Write completion
-				SEND .go ahead. to client
-
-RECV Completion of .go ahead.
+|Client| Server|
+|:-----|:-------|
+|SEND(ping source buffer rkey/addr/len)|                                            |
+|				            |  RECV Completion with ping source info|
+|				            |  RDMA READ from client source MR|
+|				             | RDMA Read completion|
+|				              |SEND .go ahead. to client|
+|RECV Completion of .go ahead.|                                      |
+|SEND (ping sink buffer rkey/addr/len)|                                |	
+|				|RECV Completion with ping sink info|
+|				|RDMA Write to client sink MR|
+|				|RDMA Write completion|
+|				|SEND .go ahead. to client|
+|RECV Completion of .go ahead.|                               |
 Validate data in source and sink buffers
 
 <repeat the above loop>
