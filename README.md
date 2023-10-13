@@ -37,19 +37,18 @@
 
 
 ---
-Updated 8/2016
+Updated 10/2023
 ---
+<br/>
 
-============
-Introduction
-============
 
-The krping module is a kernel loadable module that utilizes the Open
-Fabrics verbs to implement a client/server ping/pong program.  The module
-was implemented as a test vehicle for working with the iwarp branch of
-the OFA project.
+### Introduction
 
-The goals of this program include:
+krping模块是一个内核可加载模块，它利用了Open Fabric动词实现客户端和服务器之间的ping/pong程序。 
+
+这个模块是作为与OFA项目的iwarp分支一起使用的测试工具实现的。
+
+#### 程序目标
 
 - Simple harness to test kernel-mode verbs: connection setup, send,
 recv, rdma read, rdma write, and completion notifications.
