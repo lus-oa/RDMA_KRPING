@@ -35,7 +35,7 @@
 
 # Kernel Mode RDMA Ping Module
 
-### Introduction
+### 简介
 
 krping模块是一个内核可加载模块，它利用了Open Fabric动词实现客户端和服务器之间的ping/pong程序。 
 
