@@ -95,7 +95,11 @@ Validate data in source and sink buffers
 
 ## 如何运行
 
-与用户空间的通信通过 `/proc` 文件系统完成。Krping 暴露了一个名为 `/proc/krping` 的文件。将ASCII格式的命令写入 `/proc/krping` 将在内核中启动 krping 线程。执行写操作到 `/proc/krping` 的线程用于运行 krping 测试，因此它会在测试完成之前阻塞，或者直到用户中断写操作为止。
+与用户空间的通信通过 `/proc` 文件系统完成。
+
+Krping 导出了一个名为 `/proc/krping` 的文件。将ASCII格式的命令写入 `/proc/krping` 将在内核中启动 krping 线程。
+
+执行写操作到 `/proc/krping` 的线程用于运行 krping 测试，因此它会在测试完成之前阻塞，或者直到用户中断写操作为止。
 
 Here is a simple example to start an rping test using the rdma_krping
 module.  The server's address is 192.168.69.127.  The client will
