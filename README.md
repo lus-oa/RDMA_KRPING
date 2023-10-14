@@ -82,15 +82,17 @@ Validate data in source and sink buffers
 <repeat the above loop>
 
 
-============
-To build/install the krping module
-============
 
-# git clone git://git.openfabrics.org/~swise/krping
+## 加载krping模块
+```shell
 # cd krping
-<edit Makefile and set KSRC accordingly>
 # make && make install
 # modprobe rdma_krping
+
+//或者使用脚本文件init_client.sh一键加载
+# ./init_client.sh
+```
+
 
 ============
 Using Krping
