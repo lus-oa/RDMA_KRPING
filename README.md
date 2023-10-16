@@ -114,13 +114,17 @@ Krping 导出了一个名为 `/proc/krping` 的文件。将ASCII格式的命令�
 执行server端后会进入阻塞状态，等待client端的指令。可使用 <kbd>Ctrl</kbd>+<kbd>C</kbd>退出程序。
 
 
-
 ### client端:
 
 ```
 # modprobe rdma_krping
-# echo "client,addr=192.168.1.16,port=9999,count=100" >/proc/krping
+# echo "client,addr=192.168.1.16,port=9999,count=1" >/proc/krping
 ```
+
+client端也会进入阻塞状态，根据架构图描述的流程，client端会等待用户程序"write_data.c"的执行。
+
+程序接收到"write_data.c"执行的信号后
+、
 
 
 The syntax for krping commands is a string of options separated by commas.
