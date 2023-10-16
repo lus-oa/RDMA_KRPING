@@ -123,8 +123,8 @@ Krping 导出了一个名为 `/proc/krping` 的文件。将ASCII格式的命令�
 
 client端也会进入阻塞状态，根据架构图描述的流程，client端会等待用户程序"write_data.c"的执行。
 
-程序接收到"write_data.c"执行的信号后
-、
+程序接收到"write_data.c"执行的信号后，client端继续执行，读写操作结束后双端程序退出。
+
 
 
 The syntax for krping commands is a string of options separated by commas.
