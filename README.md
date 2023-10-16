@@ -111,9 +111,9 @@ Krping 导出了一个名为 `/proc/krping` 的文件。将ASCII格式的命令�
 # modprobe rdma_krping
 # echo "server,addr=192.168.69.127,port=9999" >/proc/krping
 ```
+执行server端后会进入阻塞状态，等待client端的指令。可使用 <kbd>Ctrl</kbd>+<kbd>C</kbd>退出程序。
 
-The echo command above will block until the krping test completes,
-or the user hits ctrl-c.
+
 
 ### client端:
 
@@ -122,8 +122,6 @@ or the user hits ctrl-c.
 # echo "client,addr=192.168.69.127,port=9999,count=100" >/proc/krping
 ```
 
-Just like on the server, the echo command above will block until the
-krping test completes, or the user hits ctrl-c.
 
 The syntax for krping commands is a string of options separated by commas.
 Options can be single keywords, or in the form: option=operand.
