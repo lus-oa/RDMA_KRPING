@@ -135,12 +135,12 @@ client端也会进入阻塞状态，根据架构图描述的流程，client端�
 |port	|	integer|		以主机字节顺序表示的服务器端口号。|				
 |count	|	integer	|	在关闭测试之前要执行的循环迭代次数。如果未指定，计数是无限的。|								
 |size	|	integer	|	ping数据的大小。krping的默认值是65字节。|				
-|verbose	|	none|		Enables printk()s that dump the rping data. Use with caution!|				
-|validate	|none	|	Enables validating the rping data on each iteration to detect data corruption.|							
-|mem_mode|	string	|	Determines how memory will be registered.  Modes include dma,and reg.  Default is dma.|				
-|server_inv |	none|		Valid only in reg mr mode, this option enables invalidating the client's reg mr via SEND_WITH_INVALIDATE messages from the server.|											
-|local_dma_lkey|	none|		Use the local dma lkey for the source of writes and sends, and in recvs	|	
-|read_inv|	none	|	Server will use READ_WITH_INV. Only valid in reg mem_mode.|
+|verbose	|	none|		启用printk()来转储rping数据。请谨慎使用!|				
+|validate	|none	|	允许在每次迭代中验证rping数据，以检测数据损坏。|							
+|mem_mode|	string	|	确定如何注册内存。模式包括dma和reg。默认是dma。|				
+|server_inv |	none|		仅在reg mr模式下有效，此选项允许通过来自服务器的SEND_WITH_INVALIDATE消息使客户端的reg mr无效。|											
+|local_dma_lkey|	none|		对写和发送的源以及接收的源使用本地dma密钥。	|	
+|read_inv|	none	|	服务器将使用READ_WITH_INV。仅在reg mem_mode下有效。|
 				
 				
 ============
