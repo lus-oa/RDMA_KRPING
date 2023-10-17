@@ -157,9 +157,9 @@ client端也会进入阻塞状态，根据架构图描述的流程，client端�
 #### 服务器端使用三个内存区域
 |  Buffer  |  Description  |    
 |:-----|:-----|
-|rdma_buf|   used as the sink of the RDMA READ to pull the ping data from the client, and then used as the source of an RDMA WRITE to push the ping data back to the client.|
-|recv_buf |  used to receive rdma rkey/addr/length advertisements from the client.|
-|send_buf | - used to send "go ahead" SEND messages to the client.|
+|rdma_buf|   用作RDMA READ的接收器，从客户端提取ping数据，然后用作RDMA WRITE的源，将ping数据推回客户端。|
+|recv_buf |  用于接收来自客户端的rdma rkey/addr/length报文。|
+|send_buf | 用于向客户端发送"go ahead"SEND消息。|
 
 
 ============
