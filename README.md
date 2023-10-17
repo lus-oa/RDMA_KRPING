@@ -125,48 +125,23 @@ client端也会进入阻塞状态，根据架构图描述的流程，client端�
 
 程序接收到"write_data.c"执行的信号后，client端继续执行，读写操作结束后双端程序退出。
 
+### 操作码
 
-
-The syntax for krping commands is a string of options separated by commas.
-Options can be single keywords, or in the form: option=operand.
-
-Operands can be integers or strings.
-
-Note you must specify the _same_ options on both sides.  For instance,
-if you want to use the server_invalidate option, then you must specify
-it on both the server and client command lines.
-
-Opcode		Operand Type	Description
-------------------------------------------------------------------------
-client		none		Initiate a client side krping thread.
-server		none		Initiate a server side krping thread.
-addr		string		The server's IP address in dotted 
-				decimal format.  Note the server can
-				use 0.0.0.0 to bind to all devices.
-port		integer		The server's port number in host byte 
-				order.
-count		integer		The number of rping iterations to 
-				perform before shutting down the test.  
-				If unspecified, the count is infinite.
-size		integer		The size of the rping data.  Default for 
-				rping is 65 bytes.
-verbose		none		Enables printk()s that dump the rping 
-				data. Use with caution!
-validate	none		Enables validating the rping data on
-				each iteration to detect data 
-				corruption.
-mem_mode	string		Determines how memory will be 
-				registered.  Modes include dma,
-				and reg.  Default is dma.
-server_inv 	none		Valid only in reg mr mode, this 
-				option enables invalidating the
-				client's reg mr via 
-				SEND_WITH_INVALIDATE messages from
-				the server.
-local_dma_lkey	none		Use the local dma lkey for the source 
-				of writes and sends, and in recvs
-read_inv	none		Server will use READ_WITH_INV. Only
-				valid in reg mem_mode.
+|Opcode		|Operand Type|	Description|
+|:------|:-------|:-------|
+|client	|	none	|	启动一个客户端krping线程.|
+|server	|	none	|	启动一个服务器端krping线程.|
+|addr	|	string	|	服务器的IP地址，点分十进制格式。注意，服务器可以使用0.0.0.0绑定到所有设备。|								
+|port	|	integer|		以主机字节顺序表示的服务器端口号。|				
+|count	|	integer	|	在关闭测试之前要执行的循环迭代次数。如果未指定，计数是无限的。|								
+|size	|	integer	|	ping数据的大小。krping的默认值是65字节。|				
+|verbose	|	none|		Enables printk()s that dump the rping data. Use with caution!|				
+|validate	|none	|	Enables validating the rping data on each iteration to detect data corruption.|							
+|mem_mode|	string	|	Determines how memory will be registered.  Modes include dma,and reg.  Default is dma.|				
+|server_inv |	none|		Valid only in reg mr mode, this option enables invalidating the client's reg mr via SEND_WITH_INVALIDATE messages from the server.|											
+|local_dma_lkey|	none|		Use the local dma lkey for the source of writes and sends, and in recvs	|	
+|read_inv|	none	|	Server will use READ_WITH_INV. Only valid in reg mem_mode.|
+				
 				
 ============
 Memory Usage:
