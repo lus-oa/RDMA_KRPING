@@ -154,16 +154,12 @@ client端也会进入阻塞状态，根据架构图描述的流程，client端�
 |recv_buf | - used to recv "go ahead" SEND from the server.  |
 |send_buf | - used to advertise the rdma buffers to the server via SEND messages.|
 
-The krping server uses 3 memory areas:
-
-rdma_buf  - used as the sink of the RDMA READ to pull the ping data
-from the client, and then used as the source of an RDMA WRITE to
-push the ping data back to the client.
-
-recv_buf  - used to receive rdma rkey/addr/length advertisements from
-the client.
-
-send_buf  - used to send "go ahead" SEND messages to the client.
+#### 服务器端使用三个内存区域
+|    |    |    
+|:-----|:-----|
+|rdma_buf|  - used as the sink of the RDMA READ to pull the ping data from the client, and then used as the source of an RDMA WRITE to push the ping data back to the client.|
+|recv_buf | - used to receive rdma rkey/addr/length advertisements from the client.|
+|send_buf | - used to send "go ahead" SEND messages to the client.|
 
 
 ============
