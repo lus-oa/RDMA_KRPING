@@ -125,7 +125,7 @@ client端也会进入阻塞状态，根据架构图描述的流程，client端�
 
 程序接收到"write_data.c"执行的信号后，client端继续执行，读写操作结束后双端程序退出。
 
-### 操作码
+### 操作码及其描述
 
 |Opcode		|Operand Type|	Description|
 |:------|:-------|:-------|
