@@ -143,25 +143,16 @@ client端也会进入阻塞状态，根据架构图描述的流程，client端�
 |read_inv|	none	|	服务器将使用READ_WITH_INV。仅在reg mem_mode下有效。|
 				
 				
-============
-Memory Usage:
-============
+### 内存使用
 
-The krping client uses 4 memory areas:
+#### 客户端使用四个内存区域
 
-start_buf - the source of the ping data.  This buffer is advertised to
-the server at the start of each iteration, and the server rdma reads
-the ping data from this buffer over the wire.
-
-rdma_buf  - the sink of the ping data.  This buffer is advertised to the
-server each iteration, and the server rdma writes the ping data that it
-read from the start buffer into this buffer.  The start_buf and rdma_buf
-contents are then compared if the krping validate option is specified.
-
-recv_buf  - used to recv "go ahead" SEND from the server.  
-
-send_buf  - used to advertise the rdma buffers to the server via SEND
-messages.
+|       |          |       |
+|:------|:-------|:-------|
+|start_buf| - the source of the ping data.|  This buffer is advertised to the server at the start of each iteration, and the server rdma reads the ping data from this buffer over the wire.|
+|rdma_buf | - the sink of the ping data. | This buffer is advertised to the server each iteration, and the server rdma writes the ping data that it read from the start buffer into this buffer.  The start_buf and rdma_buf contents are then compared if the krping validate option is specified.|
+|recv_buf | - used to recv "go ahead" SEND from the server.  |
+|send_buf | - used to advertise the rdma buffers to the server via SEND messages.|
 
 The krping server uses 3 memory areas:
 
