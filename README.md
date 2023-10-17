@@ -161,25 +161,11 @@ client端也会进入阻塞状态，根据架构图描述的流程，client端�
 |**recv_buf** |  用于接收来自客户端的rdma rkey/addr/length报文。|
 |**send_buf** | 用于向客户端发送"go ahead"SEND消息。|
 
+这些内存区域都使用在命令行中指定的内存模式向RDMA设备注册。内存模式的选项包括：dma 和 reg（也称为 fastreg）。如果未指定，默认模式是 dma。
 
-============
-Memory Registration Modes:
-============
+dma 内存模式使用一个单一的 dma_mr（DMA Memory Region）来管理所有内存缓冲区。
 
-Each of these memory areas are registered with the RDMA device using
-whatever memory mode was specified in the command line. The mem_mode
-values include: dma, and reg (aka fastreg).  The default mode, if not
-specified, is dma.
-
-The dma mem_mode uses a single dma_mr for all memory buffers.
-
-The reg mem_mode uses a reg mr on the client side for the
-start_buf and rdma_buf buffers.  Each time the client will advertise
-one of these buffers, it invalidates the previous registration and fast
-registers the new buffer with a new key.   If the server_invalidate
-option is on, then the server will do the invalidation via the "go ahead"
-messages using the IB_WR_SEND_WITH_INV opcode.   Otherwise the client
-invalidates the mr using the IB_WR_LOCAL_INV work request.
+reg 内存模式在客户端端使用 reg mr（Register Memory Region）来管理 `start_buf` 和 `rdma_buf` 缓冲区。每当客户端广告这些缓冲区之一时，它会使前一个注册失效，并使用新的密钥快速注册新的缓冲区。如果打开了 `server_invalidate` 选项，那么服务器将通过使用 IB_WR_SEND_WITH_INV 操作码的 "go ahead" 消息来执行失效操作。否则，客户端将使用 IB_WR_LOCAL_INV 工作请求来使注册失效。
 
 On the server side, reg mem_mode causes the server to use the
 reg_mr rkey for its rdma_buf buffer IO.  Before each rdma read and
