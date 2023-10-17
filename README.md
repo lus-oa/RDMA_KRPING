@@ -147,18 +147,18 @@ client端也会进入阻塞状态，根据架构图描述的流程，client端�
 
 #### 客户端使用四个内存区域
 
-|       |          |       |
-|:------|:-------|:-------|
-|start_buf| - the source of the ping data.|  This buffer is advertised to the server at the start of each iteration, and the server rdma reads the ping data from this buffer over the wire.|
-|rdma_buf | - the sink of the ping data. | This buffer is advertised to the server each iteration, and the server rdma writes the ping data that it read from the start buffer into this buffer.  The start_buf and rdma_buf contents are then compared if the krping validate option is specified.|
-|recv_buf | - used to recv "go ahead" SEND from the server.  |
-|send_buf | - used to advertise the rdma buffers to the server via SEND messages.|
+|Buffer   |  Description   |
+|:------|:-------|
+|start_buf|  该缓冲区在每次迭代开始时被通告给服务器，服务器rdma通过网络从该缓冲区读取ping数据。|
+|rdma_buf |  该缓冲区在每次迭代时都会向服务器发布，服务器rdma将从开始缓冲区读取的ping数据写入该缓冲区。如果指定了krping验证选项，那么将比较start_buf和rdma_buf内容。|
+|recv_buf | 用于从服务器接收"go ahead" SEND。 |
+|send_buf | 用于通过SEND消息向服务器通告rdma缓冲区。|
 
 #### 服务器端使用三个内存区域
-|    |    |    
+|  Buffer  |  Description  |    
 |:-----|:-----|
-|rdma_buf|  - used as the sink of the RDMA READ to pull the ping data from the client, and then used as the source of an RDMA WRITE to push the ping data back to the client.|
-|recv_buf | - used to receive rdma rkey/addr/length advertisements from the client.|
+|rdma_buf|   used as the sink of the RDMA READ to pull the ping data from the client, and then used as the source of an RDMA WRITE to push the ping data back to the client.|
+|recv_buf |  used to receive rdma rkey/addr/length advertisements from the client.|
 |send_buf | - used to send "go ahead" SEND messages to the client.|
 
 
