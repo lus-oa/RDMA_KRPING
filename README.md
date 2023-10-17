@@ -129,18 +129,18 @@ client端也会进入阻塞状态，根据架构图描述的流程，client端�
 
 |Opcode		|Operand Type|	Description|
 |:------|:-------|:-------|
-|client	|	none	|	启动一个客户端krping线程.|
-|server	|	none	|	启动一个服务器端krping线程.|
-|addr	|	string	|	服务器的IP地址，点分十进制格式。注意，服务器可以使用0.0.0.0绑定到所有设备。|								
-|port	|	integer|		以主机字节顺序表示的服务器端口号。|				
-|count	|	integer	|	在关闭测试之前要执行的循环迭代次数。如果未指定，计数是无限的。|								
-|size	|	integer	|	ping数据的大小。krping的默认值是65字节。|				
-|verbose	|	none|		启用printk()来转储rping数据。请谨慎使用!|				
-|validate	|none	|	允许在每次迭代中验证rping数据，以检测数据损坏。|							
-|mem_mode|	string	|	确定如何注册内存。模式包括dma和reg。默认是dma。|				
-|server_inv |	none|		仅在reg mr模式下有效，此选项允许通过来自服务器的SEND_WITH_INVALIDATE消息使客户端的reg mr无效。|											
-|local_dma_lkey|	none|		对写和发送的源以及接收的源使用本地dma密钥。	|	
-|read_inv|	none	|	服务器将使用READ_WITH_INV。仅在reg mem_mode下有效。|
+|**client**	|	none	|	启动一个客户端krping线程.|
+|**server**	|	none	|	启动一个服务器端krping线程.|
+|**addr**	|	string	|	服务器的IP地址，点分十进制格式。注意，服务器可以使用0.0.0.0绑定到所有设备。|								
+|**port**	|	integer|		以主机字节顺序表示的服务器端口号。|				
+|**count**	|	integer	|	在关闭测试之前要执行的循环迭代次数。如果未指定，计数是无限的。|								
+|**size**	|	integer	|	ping数据的大小。krping的默认值是65字节。|				
+|**verbose**	|	none|		启用printk()来转储rping数据。请谨慎使用!|				
+|**validate**	|none	|	允许在每次迭代中验证rping数据，以检测数据损坏。|							
+|**mem_mode**|	string	|	确定如何注册内存。模式包括dma和reg。默认是dma。|				
+|**server_inv** |	none|		仅在reg mr模式下有效，此选项允许通过来自服务器的SEND_WITH_INVALIDATE消息使客户端的reg mr无效。|											
+|**local_dma_lkey**|	none|		对写和发送的源以及接收的源使用本地dma密钥。	|	
+|**read_inv**|	none	|	服务器将使用READ_WITH_INV。仅在reg mem_mode下有效。|
 				
 				
 ### 内存使用
@@ -149,17 +149,17 @@ client端也会进入阻塞状态，根据架构图描述的流程，client端�
 
 |Buffer   |  Description   |
 |:------|:-------|
-|start_buf|  该缓冲区在每次迭代开始时被通告给服务器，服务器rdma通过网络从该缓冲区读取ping数据。|
-|rdma_buf |  该缓冲区在每次迭代时都会向服务器发布，服务器rdma将从开始缓冲区读取的ping数据写入该缓冲区。如果指定了krping验证选项，那么将比较start_buf和rdma_buf内容。|
-|recv_buf | 用于从服务器接收"go ahead" SEND。 |
-|send_buf | 用于通过SEND消息向服务器通告rdma缓冲区。|
+|**start_buf**|  该缓冲区在每次迭代开始时被通告给服务器，服务器rdma通过网络从该缓冲区读取ping数据。|
+|**rdma_buf** |  该缓冲区在每次迭代时都会向服务器发布，服务器rdma将从开始缓冲区读取的ping数据写入该缓冲区。如果指定了krping验证选项，那么将比较start_buf和rdma_buf内容。|
+|**recv_buf**| 用于从服务器接收"go ahead" SEND。 |
+|**send_buf** | 用于通过SEND消息向服务器通告rdma缓冲区。|
 
 #### 服务器端使用三个内存区域
 |  Buffer  |  Description  |    
 |:-----|:-----|
-|rdma_buf|   用作RDMA READ的接收器，从客户端提取ping数据，然后用作RDMA WRITE的源，将ping数据推回客户端。|
-|recv_buf |  用于接收来自客户端的rdma rkey/addr/length报文。|
-|send_buf | 用于向客户端发送"go ahead"SEND消息。|
+|**rdma_buf**|   用作RDMA READ的接收器，从客户端提取ping数据，然后用作RDMA WRITE的源，将ping数据推回客户端。|
+|**recv_buf** |  用于接收来自客户端的rdma rkey/addr/length报文。|
+|**send_buf** | 用于向客户端发送"go ahead"SEND消息。|
 
 
 ============
