@@ -167,13 +167,7 @@ dma 内存模式使用一个单一的 dma_mr（DMA Memory Region）来管理所�
 
 reg 内存模式在客户端端使用 reg mr（Register Memory Region）来管理 `start_buf` 和 `rdma_buf` 缓冲区。每当客户端广告这些缓冲区之一时，它会使前一个注册失效，并使用新的密钥快速注册新的缓冲区。如果打开了 `server_invalidate` 选项，那么服务器将通过使用 IB_WR_SEND_WITH_INV 操作码的 "go ahead" 消息来执行失效操作。否则，客户端将使用 IB_WR_LOCAL_INV 工作请求来使注册失效。
 
-On the server side, reg mem_mode causes the server to use the
-reg_mr rkey for its rdma_buf buffer IO.  Before each rdma read and
-rdma write, the server will post an IB_WR_LOCAL_INV + IB_WR_REG_MR
-WR chain to register the buffer with a new key.  If the krping read-inv
-option is set then the server will use IB_WR_READ_WITH_INV to do the
-rdma read and skip the IB_WR_LOCAL_INV wr before re-registering the
-buffer for the subsequent rdma write operation.
+在服务器端，`reg mem_mode` 会导致服务器使用 `reg_mr` 的 `rkey` 来进行其 `rdma_buf` 缓冲区的 IO 操作。在每次进行 `rdma read` 和 `rdma write` 操作之前，服务器将发布一个 `IB_WR_LOCAL_INV` 和 `IB_WR_REG_MR` 的 WR（Work Request）链，以使用新的密钥注册缓冲区。如果设置了 `krping read-inv` 选项，那么服务器将使用 `IB_WR_READ_WITH_INV` 来执行 `rdma read` 操作，并在重新注册缓冲区进行后续 `rdma write` 操作之前跳过 `IB_WR_LOCAL_INV` WR。
 
 ============
 Stats
