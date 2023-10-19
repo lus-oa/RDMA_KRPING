@@ -169,9 +169,7 @@ reg 内存模式在客户端端使用 reg mr（Register Memory Region）来管�
 
 在服务器端，`reg mem_mode` 会导致服务器使用 `reg_mr` 的 `rkey` 来进行其 `rdma_buf` 缓冲区的 IO 操作。在每次进行 `rdma read` 和 `rdma write` 操作之前，服务器将发布一个 `IB_WR_LOCAL_INV` 和 `IB_WR_REG_MR` 的 WR（Work Request）链，以使用新的密钥注册缓冲区。如果设置了 `krping read-inv` 选项，那么服务器将使用 `IB_WR_READ_WITH_INV` 来执行 `rdma read` 操作，并在重新注册缓冲区进行后续 `rdma write` 操作之前跳过 `IB_WR_LOCAL_INV` WR。
 
-============
-Stats
-============
+### Stats
 
 While krping threads are executing, you can obtain statistics on the
 thread by reading from the /proc/krping file.  If you cat /proc/krping,
