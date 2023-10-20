@@ -171,11 +171,7 @@ reg 内存模式在客户端端使用 reg mr（Register Memory Region）来管�
 
 ### Stats
 
-While krping threads are executing, you can obtain statistics on the
-thread by reading from the /proc/krping file.  If you cat /proc/krping,
-you will dump IO statistics for each running krping thread.  The format
-is one thread per line, and each thread contains the following stats
-separated by white spaces:
+当 krping 线程正在执行时，您可以通过读取 `/proc/krping` 文件来获取有关该线程的统计信息。如果您运行 `cat /proc/krping` 命令，您将会看到每个正在运行的 krping 线程的 IO 统计信息。格式为每行一个线程，每个线程包含以下用空格分隔的统计数据：
 
 Statistic		Description
 ---------------------------------------------------------------------
