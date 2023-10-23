@@ -173,17 +173,17 @@ reg 内存模式在客户端端使用 reg mr（Register Memory Region）来管�
 
 当 krping 线程正在执行时，您可以通过读取 `/proc/krping` 文件来获取有关该线程的统计信息。如果您运行 `cat /proc/krping` 命令，您将会看到每个正在运行的 krping 线程的 IO 统计信息。格式为每行一个线程，每个线程包含以下用空格分隔的统计数据：
 
-Statistic		Description
----------------------------------------------------------------------
-Name			krping thread number and device being used.
-Send Bytes		Number of bytes transferred in SEND WRs.
-Send Messages		Number of SEND WRs posted
-Recv Bytes		Number of bytes received via RECV completions.
-Recv Messages		Number of RECV WRs completed.
-RDMA WRITE Bytes	Number of bytes transferred in RDMA WRITE WRs.
-RDMA WRITE Messages	Number of RDMA WRITE WRs posted.
-RDMA READ Bytes		Number of bytes transferred via RDMA READ WRs.
-RDMA READ Messages	Number of RDMA READ WRs posted.
+|Statistic	|	Description|
+|:------|:---------|
+|Name			|krping thread number and device being used.|
+|Send Bytes		|Number of bytes transferred in SEND WRs.|
+|Send Messages		|Number of SEND WRs posted|
+|Recv Bytes		|Number of bytes received via RECV completions.|
+|Recv Messages		|Number of RECV WRs completed.|
+|RDMA WRITE Bytes	|Number of bytes transferred in RDMA WRITE WRs.|
+|RDMA WRITE Messages	|Number of RDMA WRITE WRs posted.|
+|RDMA READ Bytes	|	Number of bytes transferred via RDMA READ WRs.|
+|RDMA READ Messages	|Number of RDMA READ WRs posted.|
 
 Here is an example of the server side output for 5 krping threads:
 
