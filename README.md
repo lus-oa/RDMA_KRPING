@@ -175,15 +175,15 @@ reg 内存模式在客户端端使用 reg mr（Register Memory Region）来管�
 
 |Statistic	|	Description|
 |:------|:---------|
-|Name			|Krping线程号和正在使用的设备。|
-|Send Bytes		|SEND WRs 中传输的字节数。|
-|Send Messages		|SEND WRs 的数量|
-|Recv Bytes		|Number of bytes received via RECV completions.|
-|Recv Messages		|Number of RECV WRs completed.|
-|RDMA WRITE Bytes	|Number of bytes transferred in RDMA WRITE WRs.|
-|RDMA WRITE Messages	|Number of RDMA WRITE WRs posted.|
-|RDMA READ Bytes	|	Number of bytes transferred via RDMA READ WRs.|
-|RDMA READ Messages	|Number of RDMA READ WRs posted.|
+|**Name**		|Krping线程号和正在使用的设备。|
+|**Send Bytes**		|SEND WRs 中传输的字节数。|
+|**Send Messages**		|SEND WRs 的数量|
+|**Recv Bytes**		|Number of bytes received via RECV completions.|
+|**Recv Messages**		|Number of RECV WRs completed.|
+|**RDMA WRITE Bytes**	|Number of bytes transferred in RDMA WRITE WRs.|
+|**RDMA WRITE Messages**	|Number of RDMA WRITE WRs posted.|
+|**RDMA READ Bytes**	|	Number of bytes transferred via RDMA READ WRs.|
+|**RDMA READ Messages**	|Number of RDMA READ WRs posted.|
 
 Here is an example of the server side output for 5 krping threads:
 
