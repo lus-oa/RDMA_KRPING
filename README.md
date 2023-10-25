@@ -219,6 +219,4 @@ and compute RTT/2 or Gbps results.
 Use these at your own risk.
 
 
-END-OF-FILE
-
 
