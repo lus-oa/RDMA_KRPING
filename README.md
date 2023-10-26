@@ -216,7 +216,5 @@ tx-depth	none		set the sq depth for bw tests
 See the awkit* files to take the data logged in the kernel log
 and compute RTT/2 or Gbps results.
 
-Use these at your own risk.
-
 
 
