@@ -145,7 +145,7 @@ client端也会进入阻塞状态，根据架构图描述的流程，client端�
 				
 ### 内存使用
 
-#### 客户端使用四个内存区域
+#### Client端使用四个内存区域
 
 |Buffer   |  Description   |
 |:------|:-------|
@@ -154,7 +154,7 @@ client端也会进入阻塞状态，根据架构图描述的流程，client端�
 |**recv_buf**| 用于从服务器接收"go ahead" SEND。 |
 |**send_buf** | 用于通过SEND消息向服务器通告rdma缓冲区。|
 
-#### 服务器端使用三个内存区域
+#### Server端使用三个内存区域
 |  Buffer  |  Description  |    
 |:-----|:-----|
 |**rdma_buf**|   用作RDMA READ的接收器，从客户端提取ping数据，然后用作RDMA WRITE的源，将ping数据推回客户端。|
