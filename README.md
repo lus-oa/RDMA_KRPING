@@ -6,6 +6,10 @@
 
 <br/>
 
+## 简化版架构图
+![image](https://github.com/lus-oa/RDMA_KRPING/assets/122666739/94cf7dec-ff9e-4ca0-b0b8-7fb724462dd7)
+<br/>
+
 ### 代码测试方法
 
 **1.安装驱动程序。执行`./init_client.sh`**
